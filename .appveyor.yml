@@ -1,0 +1,18 @@
+environment:
+  BOOST_ROOT: c:\Libraries\boost
+  BOOST_LIBS: c:\Libraries\boost\stage\lib
+clone_folder: C:\vexcl
+platform:
+    - x64
+configuration:
+    - Release
+before_build:
+    - ps: Start-FileDownload http://registrationcenter.intel.com/irc_nas/3608/intel_sdk_for_ocl_applications_2013_r2_runtime_x64_setup.msi
+    - start /wait msiexec /i intel_sdk_for_ocl_applications_2013_r2_runtime_x64_setup.msi /qn /l*v msiexec.log
+    - dir /s /b "C:\Program Files (x86)\Common Files\Intel"
+    - echo INTELOCLSDKROOT=%INTELOCLSDKROOT%
+build_script:
+    - mkdir build && cd build
+    - cmake ..
+    - cmake --build .
+test: off
