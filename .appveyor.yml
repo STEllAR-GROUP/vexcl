@@ -7,7 +7,7 @@ platform:
 configuration:
     - Release
 before_build:
-    - ps: Start-FileDownload "https://www.dropbox.com/s/1ywxlxbd3vxqyc8/opencl_code_builder_x64_setup.msi?dl=0"
+    - ps: Start-FileDownload "https://www.dropbox.com/s/1ywxlxbd3vxqyc8/opencl_code_builder_x64_setup.msi"
     - dir
     - start /wait msiexec /i opencl_code_builder_x64_setup.msi /qn  /l*v msiexec.log
     - type msiexec.log
