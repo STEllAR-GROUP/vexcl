@@ -7,10 +7,8 @@ platform:
 configuration:
     - Release
 before_build:
-    - ps: Start-FileDownload http://registrationcenter.intel.com/irc_nas/3608/intel_sdk_for_ocl_applications_2013_r2_runtime_x64_setup.msi
-    - start /wait msiexec /i intel_sdk_for_ocl_applications_2013_r2_runtime_x64_setup.msi /qn /l*v msiexec.log
-    - dir /s /b "C:\Program Files (x86)\Common Files\Intel"
-    - echo INTELOCLSDKROOT=%INTELOCLSDKROOT%
+    - ps: Start-FileDownload "https://www.dropbox.com/s/1ywxlxbd3vxqyc8/opencl_code_builder_x64_setup.msi?dl=0"
+    - start /wait msiexec /i opencl_code_builder_x64_setup.msi /qn
 build_script:
     - mkdir build && cd build
     - cmake ..
